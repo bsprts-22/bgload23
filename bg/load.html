@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>Loading...</title>
+    <style>
+        html, body {
+            min-height: 100vh;
+            padding: 0px;
+            margin: 0px;    
+            position: relative;
+        }
+        .loading {
+            bottom: 20px;
+            position: absolute;
+            width: 100%;
+            /* background-color: grey; */
+            display: block;
+            text-align: center;
+            height: 50px;
+        }
+        .dot {
+            background-color: #e7e7e7;
+            width: 27px;
+            height: 27px;
+            display: inline-block;
+            margin-top: 10px;
+            border-radius: 100%;
+            margin-left: 14px;
+            margin-right: 14px;
+        }
+        .dot.done {
+            background-color: #fc9f42;
+        }
+        .dot_1 {
+
+        }
+        .dot_2 {
+            
+        }
+        .dot_3 {
+            animation-name: example1;
+            animation-duration: .5s;
+            animation-iteration-count: infinite;
+            animation-timing-function:ease-in-out;
+        }
+        .dot_4 {
+
+        }
+        .dot_5 {
+
+        }
+
+        @keyframes example1 {
+            0% {
+                transform: translateY(3px);
+            }
+            50% {
+                transform: translateY(-7.5px);
+            }
+            100% {
+                transform: translateY(3px);
+            }
+
+        }
+
+        .biggameslogo {
+            background-color: #fc9f42;
+            width: 265px;
+            height: 126px;
+            border-radius: 10px;
+            text-align: center;
+            transform: rotate(-6deg);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            top: calc(50vh - 63px - 64px + 10px + 10px)
+
+        }
+
+        .biggameslogo .textInLogo {
+            /* background-color: rgba(255,0,0,0.25); */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            font-size: 138px;
+            color: #ffffff;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .biggameslogo .textBelowLogo {
+            /* background-color: rgba(255,0,0,0.25); */
+            width: 100%;
+            margin-top: -10px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            color: #fc9f42;
+            font-size: 64px;
+            font-family: 'Work Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="biggameslogo">
+        <div class="textInLogo">
+            BIG
+        </div>
+        <div class="textBelowLogo">
+            GAMES
+        </div>
+    </div>
+    <div class="loading">
+        <div class="dot dot_1 done"></div>
+        <div class="dot dot_2 done"></div>
+        <div class="dot dot_3"></div>
+        <div class="dot dot_4"></div>
+        <div class="dot dot_5"></div>
+    </div>
+</body>
+</html>
