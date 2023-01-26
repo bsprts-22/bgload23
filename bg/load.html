@@ -10,7 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
     <title>Loading...</title>
     <style>
+        :root {
+            --color-1: #fc9f42;
+            --color-2: #ffffff;
+            --color-3: #e7e7e7
+
+            /* --color-1: #fc7d42;
+            --color-2: #1d1d1d;
+            --color-3: #111111;  */
+
+            /* --color-1: #d33e23;
+            --color-2: #dde7fa;
+            --color-3: #5ba714;  */
+        }
         html, body {
+            background-color: var(--color-2);
             min-height: 100vh;
             padding: 0px;
             margin: 0px;    
@@ -20,13 +34,12 @@
             bottom: 20px;
             position: absolute;
             width: 100%;
-            /* background-color: grey; */
             display: block;
             text-align: center;
             height: 50px;
         }
         .dot {
-            background-color: #e7e7e7;
+            background-color: var(--color-3);
             width: 27px;
             height: 27px;
             display: inline-block;
@@ -36,86 +49,46 @@
             margin-right: 14px;
         }
         .dot.done {
-            background-color: #fc9f42;
+            background-color: var(--color-1);
         }
-        .dot_1 {
-
-        }
-        .dot_2 {
-            
-        }
-        .dot_3 {
+        .dot.bouncing {
             animation-name: example1;
             animation-duration: .5s;
             animation-iteration-count: infinite;
-            animation-timing-function:ease-in-out;
+            animation-timing-function: ease-in-out;
         }
-        .dot_4 {
-
-        }
-        .dot_5 {
-
-        }
-
         @keyframes example1 {
-            0% {
-                transform: translateY(3px);
-            }
-            50% {
-                transform: translateY(-7.5px);
-            }
-            100% {
-                transform: translateY(3px);
-            }
-
+            0% { transform: translateY(3px); }
+            50% { transform: translateY(-7.5px); }
+            100% { transform: translateY(3px); }
         }
-
         .biggameslogo {
-            background-color: #fc9f42;
+            background-color: var(--color-1);
             min-width: 265px;
             min-height: 126px;
-
             width: fit-content;
             height: fit-content;
-
-            /* margin: 20px; */
             line-height: 0.9;
-            /* line-height: 200px; */
-
             display: inline-block;
             border-radius: 10px;
-
             text-align: center;
             transform: rotate(-6deg);
-
             position: absolute;
             left: 0;
             right: 0;
             margin-left: auto;
             margin-right: auto;
             top: calc(50vh - 63px - 72px + 10px + 10px)
-
         }
-
         .biggameslogo .textInLogo {
-            /* background-color: rgba(255,0,0,0.25); */
             padding: 5px;
-            /* transform: scale(1.05,); */
-            
-            /* margin: -10px; */
             font-size: 138px;
-            color: #ffffff;
+            color: var(--color-2);
             font-family: 'Work Sans', sans-serif;
         }
-
         .biggameslogo .textBelowLogo {
-            /* background-color: rgba(255,0,0,0.25); */
-            /* width: 100%; */
-            /* margin-top: -10px; */
-            /* height: auto; */
-            /* position: absolute; */
             position: absolute;
-            color: #fc9f42;
+            color: var(--color-1);
             font-size: 72px;
             font-family: 'Work Sans', sans-serif;
             left: 50%;
@@ -126,19 +99,42 @@
 </head>
 <body>
     <div class="biggameslogo">
-        <div class="textInLogo" contenteditable="true">
-            BIG
-        </div>
-        <div class="textBelowLogo" contenteditable="true">
-            GAMES
-        </div>
+        <div class="textInLogo" contenteditable="true">BIG</div>
+        <div class="textBelowLogo" contenteditable="true">GAMES</div>
     </div>
     <div class="loading">
-        <div class="dot dot_1 done"></div>
-        <div class="dot dot_2 done"></div>
+        <div class="dot dot_1"></div>
+        <div class="dot dot_2"></div>
         <div class="dot dot_3"></div>
         <div class="dot dot_4"></div>
         <div class="dot dot_5"></div>
     </div>
+    <script>
+        function moveToNextDot() {
+            var currentDot = document.getElementsByClassName("bouncing")[0]
+            currentDot.classList.replace("bouncing", "done")
+            var newDot = currentDot.nextElementSibling
+            if (newDot) { newDot.classList.add("bouncing") }
+        }
+        function resetDots() {
+            document.getElementsByClassName("loading")[0].style.visibility = "visible"
+            document.querySelectorAll(".dot").forEach(element => {
+                element.classList.remove("done");
+                element.classList.remove("bouncing");
+            });
+            document.getElementsByClassName("dot")[0].classList.add("bouncing");
+        }
+        function cycle() {
+            resetDots();
+            moveToNextDot();
+            setTimeout(moveToNextDot, 1450);
+            setTimeout(moveToNextDot, 1450 + 4450);
+            setTimeout(moveToNextDot, 1450 + 4450 + 450);
+            setTimeout(moveToNextDot, 1450 + 4450 + 450 + 400);
+            setTimeout(function() { document.getElementsByClassName("loading")[0].style.visibility = "hidden" }, 1450 + 4450 + 450 + 400 + 100)
+            setTimeout(cycle, 1450 + 4450 + 450 + 400 + 100 + 2000);
+        }
+        cycle()
+    </script>
 </body>
 </html>
